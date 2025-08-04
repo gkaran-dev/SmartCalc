@@ -4,7 +4,7 @@ print("🔢 Welcome to the Smart Calculator")
 
 # Loop to keep the calculator running
 while True:
-    command = input("😊 Type your calculation (or type 'exit'): ").lower()
+    command = input("Type your calculation (or type 'exit'): ").lower()
 
     if command == "exit":
         print("👋 Sayonaara!")
@@ -16,6 +16,12 @@ while True:
     # Extract numbers from the text
     numbers = [int(word) for word in words if word.isdigit()]
 
+    # Error handling if user did not enter at least two numbers for calculation
+    if len(numbers) < 2:
+        print("🚩 Please enter at least two number")
+        continue
+    
+    # condition statement to perform calculations and print result
     if "add" in command:
         result = sum(numbers)
 
@@ -27,6 +33,12 @@ while True:
 
     elif "multiply" in command:
         result = numbers[0] * numbers[1]
+
+    elif "power raised to" in command:
+        result = numbers[0] ** numbers[1]
+
+    elif "mod" in command:
+        result = numbers[0] % numbers[1]
 
     elif "divide" in command:
         try:
